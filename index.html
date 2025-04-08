@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,20 +14,40 @@
     <button id="nextPage">Lanjut</button>
   </div>
 
-  <audio id="masha-song" autoplay loop>
+  <!-- Lagu Masha -->
+  <audio id="masha-song" autoplay loop muted>
     <source src="masha-song.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
+
   <script>
-  document.getElementById("nextPage").addEventListener("click", () => {
     const mashaSong = document.getElementById("masha-song");
-    mashaSong.pause();            // stop lagu
-    mashaSong.currentTime = 0;    // reset ke awal
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      // Unmute dan coba play
+      mashaSong.muted = false;
+      const playPromise = mashaSong.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Kalau autoplay gagal, tampilkan tombol
+          const btn = document.createElement("button");
+          btn.textContent = "🎵 Klik untuk mulai lagu Masha";
+          btn.style.marginTop = "20px";
+          btn.onclick = () => {
+            mashaSong.play();
+            btn.remove();
+          };
+          document.body.appendChild(btn);
+        });
+      }
+    });
 
-    // lalu pindah ke halaman berikutnya
-    window.location.href = "page2.html";
-  });
-</script>
-
+    // Saat tombol lanjut diklik
+    document.getElementById("nextPage").addEventListener("click", () => {
+      mashaSong.pause();
+      mashaSong.currentTime = 0;
+      window.location.href = "page2.html";
+    });
+  </script>
 </body>
 </html>
