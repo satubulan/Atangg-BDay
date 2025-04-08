@@ -16,8 +16,32 @@
   </div>
 
   <!-- Musik NIKI -->
-  <audio id="niki-song" src="niki-instrumental.mp3" autoplay loop></audio>
-  <button onclick="location.href='halaman3.html'">Lanjut ➡️</button>
+  <audio id="niki-song" autoplay loop muted>
+    <source src="niki-instrumental.mp3" type="audio/mpeg">
+  </audio>
+
+  <button onclick="location.href='page3.html'">Lanjut ➡️</button>
+
+  <script>
+    const nikiSong = document.getElementById("niki-song");
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      nikiSong.muted = false;
+      const playPromise = nikiSong.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          const btn = document.createElement("button");
+          btn.textContent = "🎵 Klik untuk mulai lagu NIKI";
+          btn.style.marginTop = "20px";
+          btn.onclick = () => {
+            nikiSong.play();
+            btn.remove();
+          };
+          document.body.appendChild(btn);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-
