@@ -45,7 +45,7 @@ const texts = [
   "selamat ulang tahun ataaaang"
 ];
 
-const container = document.getElementById("container");
+const textEl = document.getElementById("message-text");
 let index = 0;
 
 function showNextLine() {
