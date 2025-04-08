@@ -16,7 +16,7 @@ function createFloatingElement(type) {
   el.style.animationDuration = 3 + Math.random() * 2 + "s";
   el.style.transform = `rotate(${Math.random() * 360}deg)`;
   document.body.appendChild(el);
-  setTimeout(() => el.remove(), 5000);
+  setTimeout(() => el.remove(), 3000);
 }
 /* script2.js */
 const texts = [
@@ -55,7 +55,7 @@ function showNextLine() {
     textEl.style.opacity = 1;
     index++;
     if (index < texts.length) {
-      setTimeout(showNextLine, 4000); // ganti per 4 detik
+      setTimeout(showNextLine, 2000); // ganti per 4 detik
     }
   }, 500);
 }
