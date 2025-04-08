@@ -18,3 +18,10 @@ function createFloatingElement(type) {
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 5000);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const nextBtn = document.getElementById("nextPage");
+  nextBtn.addEventListener("click", function () {
+    window.location.href = "page2.html";
+  });
+});
