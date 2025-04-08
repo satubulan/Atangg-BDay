@@ -51,11 +51,11 @@ let index = 0;
 function showNextLine() {
   textEl.style.opacity = 0;
   setTimeout(() => {
-    textEl.textContent = messages[index];
+    textEl.textContent = texts[index];
     textEl.style.opacity = 1;
     index++;
     if (index < messages.length) {
-      setTimeout(showMessage, 4000); // ganti per 4 detik
+      setTimeout(showNextLine, 4000); // ganti per 4 detik
     }
   }, 500);
 }
