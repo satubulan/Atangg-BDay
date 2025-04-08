@@ -15,10 +15,20 @@
     <button id="nextPage">Lanjut</button>
   </div>
 
-  <audio autoplay loop>
+  <audio id="masha-song" autoplay loop>
     <source src="masha-song.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-  <script src="script1.js"></script>
+  <script>
+  document.getElementById("nextPage").addEventListener("click", () => {
+    const mashaSong = document.getElementById("masha-song");
+    mashaSong.pause();            // stop lagu
+    mashaSong.currentTime = 0;    // reset ke awal
+
+    // lalu pindah ke halaman berikutnya
+    window.location.href = "page2.html";
+  });
+</script>
+
 </body>
 </html>
