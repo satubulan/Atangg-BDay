@@ -54,10 +54,10 @@ function showNextLine() {
     textEl.textContent = texts[index];
     textEl.style.opacity = 1;
     index++;
-    if (index < messages.length) {
+    if (index < texts.length) {
       setTimeout(showNextLine, 4000); // ganti per 4 detik
     }
   }, 500);
 }
 
-document.addEventListener("DOMContentLoaded", showMessage);
+document.addEventListener("DOMContentLoaded", showNextLine);
