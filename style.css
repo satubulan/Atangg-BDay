@@ -1,3 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffc0cb;
+  font-family: 'Comic Sans MS', cursive;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
 /* Floating Flowers & Hearts */
 .flowers, .hearts {
   position: fixed;
