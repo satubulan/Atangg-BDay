@@ -1,3 +1,23 @@
+// Floating animation
+setInterval(() => {
+  createFloatingElement("flowers");
+  createFloatingElement("hearts");
+}, 400);
+
+function createFloatingElement(type) {
+  const el = document.createElement("div");
+  el.className = type;
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.top = "100vh";
+  el.style.backgroundImage =
+    type === "flowers"
+      ? "url('https://cdn-icons-png.flaticon.com/128/991/991939.png')"
+      : "url('https://cdn-icons-png.flaticon.com/128/833/833472.png')";
+  el.style.animationDuration = 3 + Math.random() * 2 + "s";
+  el.style.transform = `rotate(${Math.random() * 360}deg)`;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 5000);
+}
 /* script2.js */
 const texts = [
   "Halo Atang!",
@@ -29,38 +49,15 @@ const container = document.getElementById("container");
 let index = 0;
 
 function showNextLine() {
-  if (index < texts.length) {
-    const line = document.createElement("div");
-    line.className = "text-line";
-    line.style.animationDelay = `${index * 3}s`;
-    line.innerText = texts[index];
-    container.appendChild(line);
+  textEl.style.opacity = 0;
+  setTimeout(() => {
+    textEl.textContent = messages[index];
+    textEl.style.opacity = 1;
     index++;
-    setTimeout(showNextLine, 3000);
-  }
+    if (index < messages.length) {
+      setTimeout(showMessage, 4000); // ganti per 4 detik
+    }
+  }, 500);
 }
 
-function createFloatingElement(type) {
-  const el = document.createElement("div");
-  el.className = type;
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.top = "100vh";
-  el.style.backgroundImage =
-    type === "flowers"
-      ? "url('https://cdn-icons-png.flaticon.com/128/991/991939.png')"
-      : "url('https://cdn-icons-png.flaticon.com/128/833/833472.png')";
-  el.style.animationDuration = 3 + Math.random() * 2 + "s";
-  el.style.transform = `rotate(${Math.random() * 360}deg)`;
-  document.body.appendChild(el);
-  setTimeout(() => el.remove(), 5000);
-}
-
-setInterval(() => {
-  createFloatingElement("flowers");
-  createFloatingElement("hearts");
-}, 400);
-
-window.onload = () => {
-  document.getElementById("music").play();
-  showNextLine();
-};
+document.addEventListener("DOMContentLoaded", showMessage);
