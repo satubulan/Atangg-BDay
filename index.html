@@ -15,32 +15,10 @@
   </div>
 
   <!-- Lagu Masha -->
-  <audio id="masha-song" autoplay loop muted>
-    <source src="masha-song.mp3" type="audio/mpeg">
-  </audio>
+  
 
   <script>
-    const mashaSong = document.getElementById("masha-song");
     
-    document.addEventListener("DOMContentLoaded", () => {
-      // Unmute dan coba play
-      mashaSong.muted = false;
-      const playPromise = mashaSong.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Kalau autoplay gagal, tampilkan tombol
-          const btn = document.createElement("button");
-          btn.textContent = "🎵 Klik untuk mulai lagu Masha";
-          btn.style.marginTop = "20px";
-          btn.onclick = () => {
-            mashaSong.play();
-            btn.remove();
-          };
-          document.body.appendChild(btn);
-        });
-      }
-    });
 
     // Saat tombol lanjut diklik
     document.getElementById("nextPage").addEventListener("click", () => {
